@@ -105,7 +105,7 @@ setupWrapper setupHsFile = do
       when outOfDate $ do
         debug verbosity "Setup script is out of date, compiling..."
 
-        (comp, conf)    <- compConf `fmap` configCompiler (Just GHC) Nothing Nothing
+        (comp, conf)    <- compConf `fmap` configCompilerEx (Just GHC) Nothing Nothing
                              defaultProgramConfiguration verbosity
         cabalLibVersion <- cabalLibVersionToUse comp conf
         let cabalPkgid = PackageIdentifier (PackageName "Cabal") cabalLibVersion
